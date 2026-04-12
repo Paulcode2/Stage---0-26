@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo Task Card - HNG Stage 0</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <article class="todo-card" data-testid="test-todo-card">
+        <!-- Header section -->
+        <div class="card-header">
+          <div class="title-wrapper">
+            <h2 class="todo-title" data-testid="test-todo-title">
+              Complete Project Documentation
+            </h2>
+            <span
+              class="todo-status"
+              data-testid="test-todo-status"
+              aria-label="Task status: Pending"
+            >
+              Pending
+            </span>
+          </div>
+          <span
+            class="todo-priority"
+            data-testid="test-todo-priority"
+            aria-label="Priority: High"
+          >
+            High
+          </span>
+        </div>
+
+        <!-- Description section -->
+        <p class="todo-description" data-testid="test-todo-description">
+          Finalize and submit all documentation for the project including API
+          docs, user guides, and technical specifications.
+        </p>
+
+        <!-- Dates section -->
+        <div class="dates-section">
+          <div class="due-date-wrapper">
+            <time
+              class="todo-due-date"
+              data-testid="test-todo-due-date"
+              datetime="2026-04-15T18:00:00Z"
+            >
+              Due Apr 15, 2026
+            </time>
+          </div>
+          <div class="time-remaining-wrapper">
+            <span
+              class="todo-time-remaining"
+              data-testid="test-todo-time-remaining"
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              Due in 3 days
+            </span>
+          </div>
+        </div>
+
+        <!-- Tags section -->
+        <ul class="todo-tags" data-testid="test-todo-tags" role="list">
+          <li class="todo-tag" data-testid="test-todo-tag-work">
+            <span class="tag-chip">Work</span>
+          </li>
+          <li class="todo-tag" data-testid="test-todo-tag-urgent">
+            <span class="tag-chip">Urgent</span>
+          </li>
+          <li class="todo-tag">
+            <span class="tag-chip">Documentation</span>
+          </li>
+        </ul>
+
+        <!-- Checkbox section -->
+        <div class="checkbox-section">
+          <input
+            type="checkbox"
+            class="todo-complete-toggle"
+            data-testid="test-todo-complete-toggle"
+            id="todo-complete-checkbox"
+            aria-label="Mark task as complete"
+          />
+          <label for="todo-complete-checkbox" class="checkbox-label">
+            Mark as complete
+          </label>
+        </div>
+
+        <!-- Action buttons section -->
+        <div class="actions-section">
+          <button
+            class="btn btn-edit"
+            data-testid="test-todo-edit-button"
+            aria-label="Edit task"
+          >
+            ✎ Edit
+          </button>
+          <button
+            class="btn btn-delete"
+            data-testid="test-todo-delete-button"
+            aria-label="Delete task"
+          >
+            🗑 Delete
+          </button>
+        </div>
+      </article>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
