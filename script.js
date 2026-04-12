@@ -125,7 +125,7 @@ class TodoCard {
    */
   handleEdit() {
     console.log("Edit clicked");
-    alert("Edit functionality: This would open an edit modal or form.");
+    alert("This would open an edit modal or form.");
   }
 
   /**
@@ -136,7 +136,7 @@ class TodoCard {
     const confirmed = confirm("Are you sure you want to delete this task?");
     if (confirmed) {
       console.log("Task deleted");
-      alert("Task would be deleted");
+      alert("Task deleted");
     }
   }
 
