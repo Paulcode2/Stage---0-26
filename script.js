@@ -102,12 +102,12 @@ class TodoCard {
     // Initial setup
     this.updateTimeRemaining();
     this.updatePriorityIndicator();
-    
+
     // Check description length after layout is calculated
     requestAnimationFrame(() => {
       this.checkDescriptionLength();
     });
-    
+
     this.syncStatusWithCheckbox();
 
     // Update time every 30-60 seconds (random interval)
@@ -405,16 +405,16 @@ class TodoCard {
 
     // Update visual indicators
     this.updatePriorityIndicator();
-    
+
     // Reset expand state before checking length
     this.collapsibleSection.classList.add("expanded");
     this.expandToggle.setAttribute("aria-expanded", "false");
-    
+
     // Check description length after layout is calculated
     requestAnimationFrame(() => {
       this.checkDescriptionLength();
     });
-    
+
     this.updateTimeRemaining();
 
     // Exit edit mode
