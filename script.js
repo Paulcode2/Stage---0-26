@@ -102,7 +102,12 @@ class TodoCard {
     // Initial setup
     this.updateTimeRemaining();
     this.updatePriorityIndicator();
-    this.checkDescriptionLength();
+    
+    // Check description length after layout is calculated
+    requestAnimationFrame(() => {
+      this.checkDescriptionLength();
+    });
+    
     this.syncStatusWithCheckbox();
 
     // Update time every 30-60 seconds (random interval)
@@ -206,17 +211,20 @@ class TodoCard {
    * Check if description is long enough to collapse
    */
   checkDescriptionLength() {
-    const maxLines = 3;
-    const lineHeight = 24; // Approximate in pixels
-    const maxHeight = maxLines * lineHeight;
+    // Force a reflow to ensure accurate measurements
+    const scrollHeight = this.collapsibleSection.scrollHeight;
+    const maxHeight = 72; // Approximately 3 lines at 16px + 1.6 line-height
 
-    if (this.collapsibleSection.scrollHeight > maxHeight) {
+    if (scrollHeight > maxHeight) {
+      // Description is long - show toggle and collapse by default
       this.expandToggle.style.display = "flex";
       this.collapsibleSection.classList.remove("expanded");
       this.expandToggle.setAttribute("aria-expanded", "false");
     } else {
+      // Description is short - hide toggle and show all content
       this.expandToggle.style.display = "none";
       this.collapsibleSection.classList.add("expanded");
+      this.expandToggle.setAttribute("aria-expanded", "false");
     }
   }
 
@@ -397,7 +405,16 @@ class TodoCard {
 
     // Update visual indicators
     this.updatePriorityIndicator();
-    this.checkDescriptionLength();
+    
+    // Reset expand state before checking length
+    this.collapsibleSection.classList.add("expanded");
+    this.expandToggle.setAttribute("aria-expanded", "false");
+    
+    // Check description length after layout is calculated
+    requestAnimationFrame(() => {
+      this.checkDescriptionLength();
+    });
+    
     this.updateTimeRemaining();
 
     // Exit edit mode
