@@ -3,107 +3,233 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo Task Card - HNG Stage 0</title>
+    <title>Todo Task Card - HNG Stage 1A</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <main class="container">
       <article class="todo-card" data-testid="test-todo-card">
-        <!-- Header section -->
-        <div class="card-header">
-          <div class="title-wrapper">
-            <h2 class="todo-title" data-testid="test-todo-title">
-              Complete Project Documentation
-            </h2>
-            <span
-              class="todo-status"
-              data-testid="test-todo-status"
-              aria-label="Task status: Pending"
-            >
-              Pending
-            </span>
+        <!-- Normal View Section -->
+        <div class="card-normal-view" id="cardNormalView">
+          <!-- Header section -->
+          <div class="card-header">
+            <div class="title-wrapper">
+              <h2 class="todo-title" data-testid="test-todo-title">
+                Complete Project Documentation
+              </h2>
+              <!-- Priority Indicator -->
+              <div class="priority-indicator-wrapper">
+                <div
+                  class="priority-indicator"
+                  data-testid="test-todo-priority-indicator"
+                  aria-label="Priority: High"
+                ></div>
+                <span
+                  class="todo-priority"
+                  data-testid="test-todo-priority"
+                  aria-label="Priority: High"
+                >
+                  High
+                </span>
+              </div>
+            </div>
           </div>
-          <span
-            class="todo-priority"
-            data-testid="test-todo-priority"
-            aria-label="Priority: High"
-          >
-            High
-          </span>
+
+          <!-- Status Control -->
+          <div class="status-control-wrapper">
+            <label for="status-control" class="status-label">Status:</label>
+            <select
+              id="status-control"
+              class="status-control"
+              data-testid="test-todo-status-control"
+              aria-label="Task status"
+            >
+              <option value="Pending">Pending</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Done">Done</option>
+            </select>
+          </div>
+
+          <!-- Overdue Indicator -->
+          <div
+            class="overdue-indicator"
+            id="overdueIndicator"
+            data-testid="test-todo-overdue-indicator"
+            role="status"
+            aria-live="polite"
+          ></div>
+
+          <!-- Description section with expand/collapse -->
+          <div class="description-section">
+            <button
+              class="expand-toggle"
+              data-testid="test-todo-expand-toggle"
+              aria-expanded="false"
+              aria-controls="collapsibleSection"
+              id="expandToggle"
+            >
+              <span class="toggle-icon">▼</span>
+              <span class="toggle-text">Show more</span>
+            </button>
+            <div
+              class="collapsible-content"
+              data-testid="test-todo-collapsible-section"
+              id="collapsibleSection"
+            >
+              <p class="todo-description" data-testid="test-todo-description">
+                Finalize and submit all documentation for the project including
+                API docs, user guides, and technical specifications.
+              </p>
+            </div>
+          </div>
+
+          <!-- Dates section -->
+          <div class="dates-section">
+            <div class="due-date-wrapper">
+              <time
+                class="todo-due-date"
+                data-testid="test-todo-due-date"
+                datetime="2026-04-20T18:00:00Z"
+              >
+                Due Apr 20, 2026
+              </time>
+            </div>
+            <div class="time-remaining-wrapper">
+              <span
+                class="todo-time-remaining"
+                data-testid="test-todo-time-remaining"
+                aria-live="polite"
+                aria-atomic="true"
+              >
+                <!-- Due in 4 days -->
+              </span>
+            </div>
+          </div>
+
+          <!-- Tags section -->
+          <ul class="todo-tags" data-testid="test-todo-tags" role="list">
+            <li class="todo-tag" data-testid="test-todo-tag-work">
+              <span class="tag-chip">Work</span>
+            </li>
+            <li class="todo-tag" data-testid="test-todo-tag-urgent">
+              <span class="tag-chip">Urgent</span>
+            </li>
+            <li class="todo-tag">
+              <span class="tag-chip">Casual</span>
+            </li>
+          </ul>
+
+          <!-- Checkbox section -->
+          <div class="checkbox-section">
+            <input
+              type="checkbox"
+              class="todo-complete-toggle"
+              data-testid="test-todo-complete-toggle"
+              id="todo-complete-checkbox"
+              aria-label="Mark task as complete"
+            />
+            <label for="todo-complete-checkbox" class="checkbox-label">
+              Mark as complete
+            </label>
+          </div>
+
+          <!-- Action buttons section -->
+          <div class="actions-section">
+            <button
+              class="btn btn-edit"
+              data-testid="test-todo-edit-button"
+              aria-label="Edit task"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-delete"
+              data-testid="test-todo-delete-button"
+              aria-label="Delete task"
+            >
+              Delete
+            </button>
+          </div>
         </div>
 
-        <!-- Description section -->
-        <p class="todo-description" data-testid="test-todo-description">
-          Finalize and submit all documentation for the project including API
-          docs, user guides, and technical specifications.
-        </p>
-
-        <!-- Dates section -->
-        <div class="dates-section">
-          <div class="due-date-wrapper">
-            <time
-              class="todo-due-date"
-              data-testid="test-todo-due-date"
-              datetime="2026-04-16T18:00:00Z"
-            >
-              Due Apr 16, 2026
-            </time>
-          </div>
-          <div class="time-remaining-wrapper">
-            <span
-              class="todo-time-remaining"
-              data-testid="test-todo-time-remaining"
-              aria-live="polite"
-              aria-atomic="true"
-            >
-              <!-- Due in 3 days -->
-            </span>
-          </div>
-        </div>
-
-        <!-- Tags section -->
-        <ul class="todo-tags" data-testid="test-todo-tags" role="list">
-          <li class="todo-tag" data-testid="test-todo-tag-work">
-            <span class="tag-chip">Work</span>
-          </li>
-          <li class="todo-tag" data-testid="test-todo-tag-urgent">
-            <span class="tag-chip">Urgent</span>
-          </li>
-          <li class="todo-tag">
-            <span class="tag-chip">Casual</span>
-          </li>
-        </ul>
-
-        <!-- Checkbox section -->
-        <div class="checkbox-section">
-          <input
-            type="checkbox"
-            class="todo-complete-toggle"
-            data-testid="test-todo-complete-toggle"
-            id="todo-complete-checkbox"
-            aria-label="Mark task as complete"
-          />
-          <label for="todo-complete-checkbox" class="checkbox-label">
-            Mark as complete
-          </label>
-        </div>
-
-        <!-- Action buttons section -->
-        <div class="actions-section">
-          <button
-            class="btn btn-edit"
-            data-testid="test-todo-edit-button"
-            aria-label="Edit task"
+        <!-- Edit Form Section (hidden by default) -->
+        <div class="card-edit-view" id="cardEditView">
+          <form
+            class="todo-edit-form"
+            data-testid="test-todo-edit-form"
+            id="editForm"
           >
-            ✎ Edit
-          </button>
-          <button
-            class="btn btn-delete"
-            data-testid="test-todo-delete-button"
-            aria-label="Delete task"
-          >
-            🗑 Delete
-          </button>
+            <!-- Title Input -->
+            <div class="form-group">
+              <label for="edit-title" class="form-label">Title</label>
+              <input
+                type="text"
+                id="edit-title"
+                class="form-input"
+                data-testid="test-todo-edit-title-input"
+                placeholder="Task title"
+                required
+              />
+            </div>
+
+            <!-- Description Textarea -->
+            <div class="form-group">
+              <label for="edit-description" class="form-label"
+                >Description</label
+              >
+              <textarea
+                id="edit-description"
+                class="form-textarea"
+                data-testid="test-todo-edit-description-input"
+                placeholder="Task description"
+                rows="4"
+              ></textarea>
+            </div>
+
+            <!-- Priority Select -->
+            <div class="form-group">
+              <label for="edit-priority" class="form-label">Priority</label>
+              <select
+                id="edit-priority"
+                class="form-select"
+                data-testid="test-todo-edit-priority-select"
+              >
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+              </select>
+            </div>
+
+            <!-- Due Date Input -->
+            <div class="form-group">
+              <label for="edit-due-date" class="form-label">Due Date</label>
+              <input
+                type="datetime-local"
+                id="edit-due-date"
+                class="form-input"
+                data-testid="test-todo-edit-due-date-input"
+              />
+            </div>
+
+            <!-- Form Actions -->
+            <div class="form-actions">
+              <button
+                type="submit"
+                class="btn btn-save"
+                data-testid="test-todo-save-button"
+              >
+                Save
+              </button>
+              <button
+                type="button"
+                class="btn btn-cancel"
+                data-testid="test-todo-cancel-button"
+                id="cancelButton"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
         </div>
       </article>
     </main>
